@@ -1,19 +1,39 @@
 type: install
 name: Deploy app Angular/React/VUE
+baseUrl: https://raw.githubusercontent.com/scripts-sources/master
 
 nodes:
 - cloudlets: 5
   nodeGroup: cp
-
+  
   docker:
     image: jacqueax/nginx-node:v3
+    
+    
+settings:
+  fields:
+  - name: gitRepo
+    caption: Git Repo Url
+    type: string
+    default: ''
+    required: 'true'
+    regex: "^https?:\\/\\/.+$"
+    regexText: Incorrect URL. HTTPS link to Git repository is required.  
+  - name: gitToken
+    caption: Token
+    type: string
+    default: ''
+required: true
+
+
+
 onInstall:
   setExtIpEnabled:
     - enabled: true
       nodeGroup: cp
+    
 
+  cmd [cp]: curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/settings.sh | /bin/bash -s ${settings.gitRepo} ${settings.gitToken} 
+  
+  
 
-  cmd [cp]: curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/settings.sh | /bin/bash
-
-
-      
