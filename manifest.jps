@@ -1,0 +1,19 @@
+type: install
+name: Deploy app Angular/React/VUE
+
+nodes:
+- cloudlets: 5
+  nodeGroup: cp
+
+  docker:
+    image: jacqueax/nginx-node:v3
+onInstall:
+  setExtIpEnabled:
+    - enabled: true
+      nodeGroup: cp
+
+
+  cmd [cp]: curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/settings.sh | /bin/bash
+
+
+      
