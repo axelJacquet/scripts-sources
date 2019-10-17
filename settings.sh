@@ -32,7 +32,7 @@ var=$(ls $pathBuild/dist)
 if [[ $var == *"index"* ]]; then
  mv $pathBuild/dist/* /www/MyApp
 else
- mv dist/$var/* /www/MyApp
+ mv $pathBuild/dist/$var/* /www/MyApp
 fi
 
 rm -rf $pathBuild
