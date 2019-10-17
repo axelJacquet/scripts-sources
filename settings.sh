@@ -36,3 +36,5 @@ else
 fi
 
 rm -rf $pathBuild
+echo "daemon off;" >> /etc/nginx/nginx.conf
+nginx
