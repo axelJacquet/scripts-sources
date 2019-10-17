@@ -5,25 +5,32 @@ baseUrl: https://raw.githubusercontent.com/scripts-sources/master
 nodes:
 - cloudlets: 5
   nodeGroup: cp
-  
+
   docker:
     image: jacqueax/nginx-node:v3
-    
-    
+
+
 settings:
   fields:
   - name: gitRepo
-    caption: Git Repo Url
+    caption: Git Repo Url*
     type: string
     default: ''
     required: 'true'
     regex: "^https?:\\/\\/.+$"
-    regexText: Incorrect URL. HTTPS link to Git repository is required.  
+    regexText: Incorrect URL. HTTPS link to Git repository is required.
   - name: gitToken
     caption: Token
     type: string
-    default: ''
-required: true
+    default: ' "Use your private token if you have private repository" '
+    required: 'false'
+  - name: buildPath
+    caption: Path of your build :
+    type: string
+    default: ' "Your Path" '
+    required: 'false'
+
+
 
 
 
@@ -31,9 +38,6 @@ onInstall:
   setExtIpEnabled:
     - enabled: true
       nodeGroup: cp
-    
 
-  cmd [cp]: curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/settings.sh | /bin/bash -s ${settings.gitRepo} ${settings.gitToken} 
-  
-  
 
+  cmd [cp]: curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/settings.sh | /bin/bash -s ${settings.gitRepo} ${settings.gitToken} ${settings.buildPath}
