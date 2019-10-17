@@ -26,13 +26,13 @@ npm install --prefix ./$pathBuild
 npm run build --prefix ./$pathBuild
 
 
-if [[ -z "$3"  ]]
+if [[ ! -z "$3"  ]]
  then
    mv $3/* /www/MyApp
  else
-   var=$(ls dist/)
+   var=$(ls $pathBuild/dist)
    if [[ $var == *"index"* ]]; then
-     mv dist/* /www/MyApp
+     mv $pathBuild/dist/* /www/MyApp
    else
      mv dist/$var/* /www/MyApp
    fi
