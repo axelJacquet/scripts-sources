@@ -26,9 +26,11 @@ npm install --prefix ./$pathBuild
 npm run build --prefix ./$pathBuild
 
 
-if [[ ! -z "$3"  ]]
+pathBuild_form=$3
+
+if [[ ! -z "$pathBuild_form"  ]]
  then
-   mv $3/* /www/MyApp
+   mv $pathBuild_form/* /www/MyApp
  else
    var=$(ls $pathBuild/dist)
    if [[ $var == *"index"* ]]; then
@@ -37,4 +39,4 @@ if [[ ! -z "$3"  ]]
      mv dist/$var/* /www/MyApp
    fi
 fi
-#rm -rf $pathBuild
+rm -rf $pathBuild
