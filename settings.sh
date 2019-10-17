@@ -37,4 +37,4 @@ if [[ ! -z "$3"  ]]
      mv dist/$var/* /www/MyApp
    fi
 fi
-rm -rf $pathBuild
+#rm -rf $pathBuild
