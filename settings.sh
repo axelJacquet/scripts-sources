@@ -35,7 +35,6 @@ else
  mv $pathBuild/dist/$var/* /www/MyApp
 fi
 
-echo "daemon off;" >> /etc/nginx/nginx.conf
-rc-service nginx reload
+nginx -g 'daemon off;'
 
 rm -rf $pathBuild
