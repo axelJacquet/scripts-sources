@@ -36,6 +36,6 @@ else
 fi
 
 echo "daemon off;" >> /etc/nginx/nginx.conf
-rc-service nginx start
+rc-service nginx reload
 
 rm -rf $pathBuild
