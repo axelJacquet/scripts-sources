@@ -35,6 +35,6 @@ else
  mv $pathBuild/dist/$var/* /www/MyApp
 fi
 
-nginx -g 'daemon off;'
+
 
 rm -rf $pathBuild
