@@ -36,5 +36,6 @@ else
 fi
 
 echo "daemon off;" >> /etc/nginx/nginx.conf
+rc-service nginx start
 
 rm -rf $pathBuild
