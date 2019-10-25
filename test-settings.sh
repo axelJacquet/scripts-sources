@@ -44,7 +44,7 @@ done
 
 
 
-if [[ -z "$token"  ]]
+if [[ -z "${token}"  ]]
   then
     if [[ $link == *".git"* ]];
     then
@@ -70,9 +70,9 @@ npm run build --prefix ./$pathBuild
 
 
 
-if [[ ! -z "$pathBuild_form"  ]]
+if [[ ! -z "${pathBuild_form}"  ]]
  then
-   mv $pathBuild/"$pathBuild_form"/* /www/MyApp
+   mv $pathBuild/${pathBuild_form}/* /www/MyApp
  else
    var=$(ls $pathBuild/dist)
    if [[ $var == *"index"* ]]; then
