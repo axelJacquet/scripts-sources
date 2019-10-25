@@ -2,7 +2,7 @@
 
 usage() {  1>&2; exit 1; }
 
-while getopts "l:tp" o; do
+while getopts "ltp" o; do
     case "${o}" in
 
         l)
