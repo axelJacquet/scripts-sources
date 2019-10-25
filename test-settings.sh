@@ -72,7 +72,7 @@ npm run build --prefix ./$pathBuild
 
 if [[ ! -z "$pathBuild_form"  ]]
  then
-   mv $pathBuild/$pathBuild_form/* /www/MyApp
+   mv $pathBuild/"$pathBuild_form"/* /www/MyApp
  else
    var=$(ls $pathBuild/dist)
    if [[ $var == *"index"* ]]; then
