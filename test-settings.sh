@@ -2,7 +2,7 @@
 
 usage() {  1>&2; exit 1; }
 
-while getopts "l:t:p:" o; do
+while getopts "l:tp" o; do
     case "${o}" in
 
         l)
@@ -26,7 +26,7 @@ echo "token = ${token}"
 
 
 
-if [[ -z "$token"  ]]
+if [[ -z "${token}"  ]]
   then
     if [[ $link == *".git"* ]];
     then
