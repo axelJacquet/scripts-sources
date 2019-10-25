@@ -78,7 +78,7 @@ if [[ ! -z "$pathBuild_form"  ]]
    if [[ $var == *"index"* ]]; then
      mv $pathBuild/dist/* /www/MyApp
    else
-     mv dist/$var/* /www/MyApp
+     mv $pathBuild/dist/$var/* /www/MyApp
    fi
 fi
 rm -rf $pathBuild
