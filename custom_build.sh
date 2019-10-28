@@ -1,6 +1,5 @@
 #!/bin/bash
 
-token=$2
 link=$1
 if [[ -z "$token"  ]]
   then
@@ -26,11 +25,11 @@ npm install --prefix ./$pathBuild
 npm run build --prefix ./$pathBuild
 
 
-pathBuild_form=$3
+pathBuild_form=$2
 
 if [[ ! -z "$pathBuild_form"  ]]
  then
-   mv $pathBuild_form/* /www/MyApp
+   mv $pathBuild/$pathBuild_form/* /www/MyApp
  else
    var=$(ls $pathBuild/dist)
    if [[ $var == *"index"* ]]; then
