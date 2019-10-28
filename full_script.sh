@@ -8,14 +8,14 @@ if [[ -z "$token"  ]]
     then
       repo="https://"$(echo $link |  cut -d'/' -f4 )@$(echo $link | cut -d'/' -f3)/$(echo $link |  cut -d'/' -f4)/$(echo $link |  cut -d'/' -f5)
     else
-      repo="https://"$(echo $link |  cut -d'/' -f4 )@$(echo $link | cut -d'/' -f3)/$(echo $link |  cut -d'/' -f4)/$(echo $link |  cut -d'/' -f5).git
+      repo="https://"$(echo $link |  cut -d'/' -f4 )@$(echo $link | cut -d'/' -f3)/$(echo $link |  cut -d'/' -f4)/$(echo $link |  cut -d'/' -f5)
     fi
   else
     if [[ $link == *".git"* ]];
     then
       repo="https://"$(echo $link |  cut -d'/' -f4 ):$token@$(echo $link | cut -d'/' -f3)/$(echo $link |  cut -d'/' -f4)/$(echo $link |  cut -d'/' -f5)
     else
-      repo="https://"$(echo $link |  cut -d'/' -f4 ):$token@$(echo $link | cut -d'/' -f3)/$(echo $link |  cut -d'/' -f4)/$(echo $link |  cut -d'/' -f5).git
+      repo="https://"$(echo $link |  cut -d'/' -f4 ):$token@$(echo $link | cut -d'/' -f3)/$(echo $link |  cut -d'/' -f4)/$(echo $link |  cut -d'/' -f5)
     fi
 fi
 git clone $repo
@@ -30,7 +30,7 @@ pathBuild_form=$3
 
 if [[ ! -z "$pathBuild_form"  ]]
  then
-   mv $pathBuild_form/* /www/MyApp
+   mv $pathBuild/$pathBuild_form/* /www/MyApp
  else
    var=$(ls $pathBuild/dist)
    if [[ $var == *"index"* ]]; then
