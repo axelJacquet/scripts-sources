@@ -5,7 +5,7 @@ baseUrl: https://raw.githubusercontent.com/scripts-sources/master
 nodes:
 - cloudlets: 15
   nodeGroup: cp
-
+  extip: true
   docker:
     image: jacqueax/nginx-node:rc-update
 
@@ -23,26 +23,48 @@ settings:
     caption: Token
     type: string
     required: false
-    default: ''
+    default: 'yourToken'
   - name: buildPath
     caption: your path for build
     type: string
     required: false
-    default: ''
-
-
+    default: 'setCustomPath'
 
 
 
 onInstall:
-  setExtIpEnabled:
-    - enabled: true
-      nodeGroup: cp
+
+- if ( '${settings.buildPath}' == 'setCustomPath' && '${settings.gitToken}' == 'yourToken' ): scriptRepo
 
 
-  cmd [cp]:
-    - mkdir -p /run/nginx
-    - curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/settings.sh | /bin/bash -s ${settings.gitRepo} ${settings.gitToken} ${settings.buildPath}
+- if ( '${settings.gitToken}' !== 'yourToken' && '${settings.buildPath}' !== 'setCustomPath' ): totalScript
 
 
-    
+- if ( '${settings.gitToken}' !== 'yourToken' ): scriptToken
+
+
+- if ( '${settings.buildPath}' !== 'setCustomPath' ): scriptPath
+
+actions:
+  totalScript:
+    cmd [cp]:
+            - curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/full_script.sh | /bin/bash -s ${settings.gitRepo} ${settings.gitToken} ${settings.buildPath}
+
+  scriptToken:
+      cmd [cp]:
+              - curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/token.sh | /bin/bash -s ${settings.gitRepo} ${settings.gitToken}
+
+
+  scriptPath:
+       cmd [cp]:
+            - curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/custom_build.sh | /bin/bash -s ${settings.gitRepo} ${settings.buildPath}
+
+  scriptRepo:
+       cmd [cp]:
+            - curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/pub_auth.sh | /bin/bash -s ${settings.gitRepo}
+
+
+
+
+createDirectory [cp]:
+- path : /run/nginx
