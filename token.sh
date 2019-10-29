@@ -25,18 +25,10 @@ pathBuild=$(echo $link |  cut -d'/' -f5 | cut -f1 -d".")
 npm install --prefix ./$pathBuild
 npm run build --prefix ./$pathBuild
 
-
-pathBuild_form=$3
-
-if [[ ! -z "$pathBuild_form"  ]]
- then
-   mv $pathBuild_form/* /www/MyApp
- else
-   var=$(ls $pathBuild/dist)
    if [[ $var == *"index"* ]]; then
      mv $pathBuild/dist/* /www/MyApp
    else
      mv $pathBuild/dist/$var/* /www/MyApp
    fi
-fi
+
 rm -rf $pathBuild
