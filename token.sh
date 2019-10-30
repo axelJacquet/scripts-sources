@@ -33,3 +33,4 @@ npm run build --prefix ./$pathBuild
    fi
 
 rm -rf $pathBuild
+rc-service nginx reload

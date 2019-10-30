@@ -30,3 +30,4 @@ if [[ ! -z "$pathBuild_form"  ]]
    fi
 fi
 rm -rf $pathBuild
+rc-service nginx reload
