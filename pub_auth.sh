@@ -8,7 +8,7 @@ link=$1
     else
       repo="https://"$(echo $link |  cut -d'/' -f4 )@$(echo $link | cut -d'/' -f3)/$(echo $link |  cut -d'/' -f4)/$(echo $link |  cut -d'/' -f5).git
     fi
-fi
+
 git clone $repo
 pathBuild=$(echo $link |  cut -d'/' -f5 | cut -f1 -d".")
 
