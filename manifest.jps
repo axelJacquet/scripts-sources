@@ -3,9 +3,9 @@ name: Deploy app Angular/React/VUE
 baseUrl: https://raw.githubusercontent.com/scripts-sources/master
 
 nodes:
-- cloudlets: 15
+- fixedCloudlets: 20
   nodeGroup: cp
-  extip: true
+
   docker:
     image: jacqueax/nginx-node:rc-update
 
@@ -31,6 +31,8 @@ settings:
     default: 'setCustomPath'
 
 
+globals:
+ssl: true
 
 onInstall:
 
