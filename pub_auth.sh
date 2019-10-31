@@ -1,8 +1,7 @@
 #!/bin/bash
 
 link=$1
-if [[ -z "$token"  ]]
-  then
+
     if [[ $link == *".git"* ]];
     then
       repo="https://"$(echo $link |  cut -d'/' -f4 )@$(echo $link | cut -d'/' -f3)/$(echo $link |  cut -d'/' -f4)/$(echo $link |  cut -d'/' -f5)
@@ -11,7 +10,6 @@ if [[ -z "$token"  ]]
     fi
 fi
 git clone $repo
-
 pathBuild=$(echo $link |  cut -d'/' -f5 | cut -f1 -d".")
 
 cd $pathBuild
