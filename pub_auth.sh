@@ -12,7 +12,7 @@ if [[ -z "$token"  ]]
 fi
 git clone $repo
 
-ppathBuild=$(echo $link |  cut -d'/' -f5 | cut -f1 -d".")
+pathBuild=$(echo $link |  cut -d'/' -f5 | cut -f1 -d".")
 
 cd $pathBuild
 
