@@ -19,18 +19,52 @@ if [[ -z "$token"  ]]
     fi
 fi
 git clone $repo
-
 pathBuild=$(echo $link |  cut -d'/' -f5 | cut -f1 -d".")
 
-npm install --prefix ./$pathBuild
-npm run build --prefix ./$pathBuild
+cd $pathBuild
 
-   var=$(ls $pathBuild/dist)
-   if [[ $var == *"index"* ]]; then
-     mv $pathBuild/dist/* /www/MyApp
-   else
-     mv $pathBuild/dist/$var/* /www/MyApp
-   fi
+find . -name dist -type d -exec rm -rf {} +
+find . -name build -type d -exec rm -rf {} +
 
-rm -rf $pathBuild
+
+arrayBefore=($(ls -d */))
+
+npm install
+
+PACKAGE_VERSION=$(cat package.json \
+  | grep build \
+  | head -1 \
+  | awk -F: '{ print $1 }' \
+  | sed 's/[",]//g')
+if [ $PACKAGE_VERSION == "build" ]
+then
+        npm run build
+else
+  PACKAGE_CLI=$(cat package.json \
+    | grep prod \
+    | head -1 \
+    | awk -F: '{ print $1 }' \
+    | sed 's/[",]//g')
+  echo $PACKAGE_CLI
+  npm run $PACKAGE_CLI
+fi
+
+rm -rf node_modules/
+
+
+arrayAfter=($(ls -d */))
+diff(){
+  awk 'BEGIN{RS=ORS=" "}
+       {NR==FNR?a[$0]++:a[$0]--}
+       END{for(k in a)if(a[k])print k}' <(echo -n "${!1}") <(echo -n "${!2}")
+}
+folder=$(diff arrayBefore[@] arrayAfter[@])
+
+#echo $folder
+myPathWithIndex=$(find $folder -name "index.html" | sed 's|\(.*\)/.*|\1|')
+echo $myPathWithIndex
+
+
+mv $myPathWithIndex/* /www/MyApp
+rm -rf ../$pathBuild
 rc-service nginx reload
