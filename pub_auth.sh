@@ -56,6 +56,6 @@ myPathWithIndex=$(find $folder -name "index.html" | sed 's|\(.*\)/.*|\1|')
 echo $myPathWithIndex
 
 
-mv $myPathWithIndex/* /home/jacqueax/MyApp
+mv $myPathWithIndex/* /www/MyApp
 rm -rf ../$pathBuild
 rc-service nginx reload
