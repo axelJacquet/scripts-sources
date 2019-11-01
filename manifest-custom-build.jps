@@ -1,0 +1,55 @@
+type: install
+name: Deploy app Angular/React/VUE
+baseUrl: https://raw.githubusercontent.com/scripts-sources/master
+
+nodes:
+- fixedCloudlets: 20
+  nodeGroup: cp
+
+  docker:
+    image: jacqueax/nginx-node:rc-update
+
+
+settings:
+  fields:
+  - name: gitRepo
+    caption: Git Repo Url*
+    type: string
+    required: true
+    default: ''
+    regex: "^https?:\\/\\/.+$"
+    regexText: Incorrect URL. HTTPS link to Git repository is required.
+  - name: gitToken
+    caption: Token
+    type: string
+    required: false
+    default: ''
+    regex: ([0-9A-Za-z]*:[0-9A-Za-z]*)
+    regexText: ton token est naze mec
+
+
+
+globals:
+ssl: true
+
+onInstall:
+
+- if ( '${settings.gitToken}' == '' ): scriptRepo
+
+- if ( '${settings.gitToken}' !== '' ): scriptToken
+
+actions:
+
+  scriptToken:
+      cmd [cp]:
+              - curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/token.sh | /bin/bash -s ${settings.gitRepo} ${settings.gitToken}
+
+  scriptRepo:
+       cmd [cp]:
+            - curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/pub_auth.sh | /bin/bash -s ${settings.gitRepo}
+
+
+
+
+createDirectory [cp]:
+- path : /run/nginx
