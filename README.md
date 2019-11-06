@@ -1,2 +1,6 @@
-# scripts-sources
-Scripts bash for Jelastic calls
+# Nodejs deployment
+
+## How to use it ?
+
+
+Premièrement, la cible d
