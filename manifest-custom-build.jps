@@ -7,7 +7,7 @@ nodes:
   nodeGroup: cp
 
   docker:
-    image: jacqueax/nginx-node:rc-update
+    image: jacqueax/nginx-node:${settings.tag}
 
 
 settings:
@@ -24,8 +24,12 @@ settings:
     type: string
     required: false
     default: ''
-    regex: ([0-9A-Za-z]*:[0-9A-Za-z]*)
-    regexText: ton token est naze mec
+  - type: dockertags
+    name: tag
+    caption: node version
+    values:
+    - name: lts
+    - name: first
 
 
 
