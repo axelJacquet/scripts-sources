@@ -1,136 +1,4 @@
-Infomaniak
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Aucune tâche active
-
-
-
-
-
-
-
-
-
-    default: ''
-
-  - type: dockertags
-
-    name: tag
-
-    caption: node version
-
-    values:
-
-
-
-    - name: lts
-
-    - name: 12.9.0
-
-    - name: 12.6.0
-
-    - name: 12.4.0
-
-    - name: 12.3.1
-
-    - name: 12.1.0
-
-    - name: 12.0.0
-
-
-
-    - name: 11.15.0
-
-    - name: 11.14.0
-
-    - name: 11.13.0
-
-    - name: 11.12.0
-
-    - name: 11.11.0
-
-    - name: 11.10.0
-
-    - name: 11.7.0
-
-    - name: 11.6.0
-
-    - name: 11.0.0
-
-
-
-    - name: 10.17.0
-
-    - name: 10.16.3
-
-    - name: 10.16.0
-
-    - name: 10.15.3
-
-    - name: 10.15.1
-
-    - name: 10.15.0
-
-    - name: 10.12.0
-
-    - name: 10.11.0
-
-    - name: 10.10.0
-
-    - name: 10.8.0
-
-    - name: 10.6.0
-
-    - name: 10.4.1
-
-    - name: 10.1.0
-
-    - name: 10.0.0
-
-
-
-    - name: 9.11.2
-
-    - name: 9.11.1
-
-
-
-    - name: 8.16.1
-
-    - name: 8.16.0
-
-    - name: 8.15.0
-
-    - name: 8.12.0
-
-    - name: 8.11.3
-
-    - name: 8.11.1
-
-    - name: 8.10.0
-
-    - name: 8.9.4
-
-    - name: 8.9.0
-
-    type: install
+type: install
 name: Deploy app Angular/React/VUE
 baseUrl: https://raw.githubusercontent.com/scripts-sources/master
 
@@ -160,8 +28,56 @@ settings:
     name: tag
     caption: node version
     values:
+
     - name: lts
-    - name: first
+    - name: 12.9.0
+    - name: 12.6.0
+    - name: 12.4.0
+    - name: 12.3.1
+    - name: 12.1.0
+    - name: 12.0.0
+
+    - name: 11.15.0
+    - name: 11.14.0
+    - name: 11.13.0
+    - name: 11.12.0
+    - name: 11.11.0
+    - name: 11.10.0
+    - name: 11.7.0
+    - name: 11.6.0
+    - name: 11.0.0
+
+    - name: 10.17.0
+    - name: 10.16.3
+    - name: 10.16.0
+    - name: 10.15.3
+    - name: 10.15.1
+    - name: 10.15.0
+    - name: 10.12.0
+    - name: 10.11.0
+    - name: 10.10.0
+    - name: 10.8.0
+    - name: 10.6.0
+    - name: 10.4.1
+    - name: 10.1.0
+    - name: 10.0.0
+
+    - name: 9.11.2
+    - name: 9.11.1
+
+    - name: 8.16.1
+    - name: 8.16.0
+    - name: 8.15.0
+    - name: 8.12.0
+    - name: 8.11.3
+    - name: 8.11.1
+    - name: 8.10.0
+    - name: 8.9.4
+    - name: 8.9.0
+
+    - name: 6.17.1
+    - name: 6.16.0
+    - name: 6.12.3
 
 
 
@@ -189,54 +105,3 @@ actions:
 
 createDirectory [cp]:
 - path : /run/nginx
-
-
-    - name: 6.17.1
-
-    - name: 6.16.0
-
-    - name: 6.12.3
-
-​
-
-​
-
-​
-
-globals:
-
-ssl: true
-
-​
-
-onInstall:
-
-​
-
-- if ( '${settings.gitToken}' == '' ): scriptRepo
-
-​
-
-- if ( '${settings.gitToken}' !== '' ): scriptToken
-
-​
-
-actions:
-
-​
-
-  scriptToken:
-
-      cmd [cp]:
-
-              - curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/token.sh | /bin/bash -s ${settings.gitRepo} ${settings.gitToken}
-
-​
-
-  scriptRepo:
-
-       cmd [cp]:
-
-            - curl -fsS https://raw.githubusercontent.com/axelJacquet/scripts-sources/master/pub_auth.sh | /bin/bash -s ${settings.gitRepo}
-
-​
