@@ -4,7 +4,7 @@
 
 # Nodejs deployment
 
-Dedicated nodejs/nginx server into docker container ultra slim for building source code and deploying projects. Secured with built-in platform SSL.
+Dedicated nodejs/nginx server into docker container ultra slim for building source code and deploying nodesjs projects. Secured with built-in platform SSL.
 Runners are automatically scaled vertically, horizontal scaling is available in a click.
 
 ## Installation Process
