@@ -12,6 +12,24 @@ Runners are automatically scaled vertically, horizontal scaling is available in 
 
 In the opened confirmation window at Jelastic dashboard, set an Environment name and optionally, customize its Display Name, set your git repository with token if your repository is private. You can choice node version for a perform build, I recommand lts version (actually 12.13.0).
 
+Currently, the following Node.js versions are supported:
+
+* 9.11.1
+* 9.11.2
+
+
+* 8.9.0
+* 8.9.4
+* 8.10.0
+* 8.11.1
+* 8.11.3
+* 8.12.0
+* 8.15.0
+* 8.16.0
+* 8.16.1
+
+
+
 Environment name matches with the final https url. On the screenshot the app will be deploy on https://myWebsite.jcloud.ik-server.com .
 
 <p align="left">
