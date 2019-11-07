@@ -11,4 +11,8 @@ Runners are automatically scaled vertically, horizontal scaling is available in 
 
 In the opened confirmation window at Jelastic dashboard, set an Environment name and, optionally, customize its Display Name. Then, select the preferable region (if several are available).
 
+<p align="left">
+<img src="images/install.png" width="500">
+</p>
+
 By default, Jelastic will issue a platform built-in SSL certificate for your application.
