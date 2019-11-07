@@ -1,7 +1,10 @@
 type: install
 name: Deploy app Angular/React/VUE
-baseUrl: https://raw.githubusercontent.com/scripts-sources/master
-
+baseUrl: https://raw.githubusercontent.com/axelJacquet/scripts-sources/master
+description:
+  text: /text/description.md
+  short: Automate deploy for Angular/React/Vue applications
+logo: /images/nodeJS-logo.png
 nodes:
 - fixedCloudlets: 20
   nodeGroup: cp
@@ -29,6 +32,8 @@ settings:
     caption: node version
     values:
 
+
+    - name: 13.0.1
     - name: lts
     - name: 12.9.0
     - name: 12.6.0
@@ -105,3 +110,6 @@ actions:
 
 createDirectory [cp]:
 - path : /run/nginx
+
+
+success: /text/success.md
