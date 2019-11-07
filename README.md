@@ -20,7 +20,7 @@ Environment name matches with the final https url. On the screenshot the app wil
 </p>
 
 By default, Jelastic will issue a platform built-in SSL certificate for your application.
-If you want have your custom domain, you can make an alias on the current Jelastic's domain ( in this case: https://myWebsite.jcloud.ik-server.com).
+If you want have your custom domain, you can make an alias (CNAME register) on the current Jelastic's domain ( in this case: https://myWebsite.jcloud.ik-server.com).
 
 If you want have a private token:
 
