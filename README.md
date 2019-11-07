@@ -1,3 +1,7 @@
+<p align="left">
+<img src="images/nodeJS-logo.png" width="100">
+</p>
+
 # Nodejs deployment
 
 Dedicated nodejs/nginx server into docker container ultra slim for building source code and deploying projects. Secured with built-in platform SSL.
