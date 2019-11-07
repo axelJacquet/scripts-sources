@@ -21,3 +21,7 @@ Environment name matches with the final https url. On the screenshot the app wil
 
 By default, Jelastic will issue a platform built-in SSL certificate for your application.
 If you want have your custom domain, you can make an alias on the current Jelastic's domain ( in this case: https://myWebsite.jcloud.ik-server.com).
+
+If you want have private token:
+
+[GitHub](https://github.com/jelastic-jps/git-push-deploy/wiki/GitHub-Access-Token)/[GitLab](https://github.com/jelastic-jps/git-push-deploy/wiki/GitLab-Access-Token)
