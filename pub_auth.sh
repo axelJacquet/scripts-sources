@@ -10,7 +10,7 @@ link=$1
     fi
 
 git clone $repo
-pathBuild=$(echo $link |  cut -d'/' -f5 | cut -f1 -d".")
+pathBuild=$(basename $_ .git)/
 
 cd $pathBuild
 
